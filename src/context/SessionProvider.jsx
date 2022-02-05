@@ -8,6 +8,7 @@ export const useSession = () => useContext(SessionContext);
 export default function SessionProvider({ children }) {
 
   const [ isLogged, setIsLogged ] = useState(false);
+  const [ loginError, setLoginError ] = useState(false);
   const [ userToken, setUserToken ] = useState(() =>
     JSON.parse(window.localStorage.getItem('userToken') || null),
   );
@@ -37,10 +38,13 @@ export default function SessionProvider({ children }) {
 
   const signIn = async (values, callback) => {
     const authToken = await fetchToken(values);
-    if (authToken !== undefined) {
-      storeToken(authToken);
+    if (Object.keys(authToken)[0] === 'token') {
+      storeToken(authToken.token);
+      callback();
     }
-    callback();
+    else {
+      setLoginError(true);
+    }
   };
 
   return (
@@ -51,6 +55,8 @@ export default function SessionProvider({ children }) {
         userToken,
         signIn,
         isLogged,
+        setLoginError,
+        loginError,
       }}
     >
       {children}

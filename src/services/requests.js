@@ -16,10 +16,10 @@ export const fetchToken = async (values) => {
   try {
     const userData = { ...values };
     const response = await axios.post(authAPI, userData);
-    const userToken = response.data.token;
+    const userToken = response.data;
     return userToken;
   }
   catch (error) {
-    console.log(error);
+    return error;
   }
 };

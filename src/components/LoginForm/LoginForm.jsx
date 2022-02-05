@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import TextInput from '../TextInput/TextInput';
 import { useSession } from '../../context/SessionProvider';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Loader from '../Loader';
+import swal from 'sweetalert';
 
 export default function LoginForm() {
-  const { signIn } = useSession();
+  const { signIn, loginError, setLoginError } = useSession();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,6 +20,18 @@ export default function LoginForm() {
       navigate(from, { replace: true });
     });
   }
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  useEffect(() => {
+    if (loginError) {
+      swal('Ooops! Las credenciales son invalidas')
+        .then(() => {
+          setLoginError(false);
+        });
+    }
+  }, [ loginError ]);
+
   return (
     <>
       <h1>Log in</h1>
@@ -36,24 +50,28 @@ export default function LoginForm() {
             .required('Required'),
         })}
         onSubmit={async (values) => {
+          await sleep(2000);
           handleSubmit(values);
         }}
       >
-        <Form>
-          <TextInput
-            label="Email Address"
-            name="email"
-            type="email"
-            placeholder="Email"
-          />
-          <TextInput
-            label="Password"
-            name="password"
-            type="text"
-            placeholder="Password"
-          />
-          <button type="submit">Submit</button>
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <TextInput
+              label="Email Address"
+              name="email"
+              type="email"
+              placeholder="Email"
+            />
+            <TextInput
+              label="Password"
+              name="password"
+              type="text"
+              placeholder="Password"
+            />
+            {isSubmitting ? <Loader/> : <button type="submit" >Submit</button>}
+            {/* <button type="submit" disabled={isSubmitting}>Submit</button> */}
+          </Form>
+        )}
       </Formik>
     </>
   );
