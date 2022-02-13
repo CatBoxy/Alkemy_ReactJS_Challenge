@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './screens/Home';
 import DishPage from './screens/DishPage';
 import LoginPage from './screens/LoginPage';
-import RequireAuth from './components/RequireAuth/RequireAuth';
+import RequireAuth from './components/RequireAuth';
+import DishesPage from './screens/DishesPage';
 
 function MyRoutes() {
 
@@ -29,6 +30,14 @@ function MyRoutes() {
         element= {
           <RequireAuth>
             <DishPage/>
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/dishes"
+        element= {
+          <RequireAuth>
+            <DishesPage/>
           </RequireAuth>
         }
       />

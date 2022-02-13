@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import TextInput from '../TextInput/TextInput';
-import { useSession } from '../../context/SessionProvider';
+import TextInput from './TextInput';
+import { useSession } from '../context/SessionProvider';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Loader from '../Loader';
+import Loader from './Loader';
 import swal from 'sweetalert';
 
 export default function LoginForm() {

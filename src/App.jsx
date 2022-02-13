@@ -2,16 +2,19 @@ import React from 'react';
 import './App.css';
 import SessionProvider from './context/SessionProvider.jsx';
 import MyRoutes from './MyRoutes.jsx';
-import GlobalHeader from './components/Header/GlobalHeader.jsx';
+import GlobalHeader from './components/GlobalHeader.jsx';
+import MenuProvider from './context/MenuProvider';
 
 function App() {
 
   return (
     <SessionProvider>
-      <div className="App">
-        <GlobalHeader />
-        <MyRoutes />
-      </div>
+      <MenuProvider>
+        <div className="App">
+          <GlobalHeader />
+          <MyRoutes />
+        </div>
+      </MenuProvider>
     </SessionProvider>
   );
 }

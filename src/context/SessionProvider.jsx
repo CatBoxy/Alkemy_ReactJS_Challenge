@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useEffect } from 'react';
+import React, { useContext, createContext, useState } from 'react';
 import { fetchToken } from '../services/requests';
 
 const SessionContext = createContext();
@@ -7,17 +7,10 @@ export const useSession = () => useContext(SessionContext);
 
 export default function SessionProvider({ children }) {
 
-  const [ isLogged, setIsLogged ] = useState(false);
   const [ loginError, setLoginError ] = useState(false);
   const [ userToken, setUserToken ] = useState(() =>
     JSON.parse(window.localStorage.getItem('userToken') || null),
   );
-
-  useEffect(() => {
-    if (userToken !== null) {
-      setIsLogged(true);
-    }
-  }, [ userToken ]);
 
   const storeToken = (token) => {
     try {
@@ -33,7 +26,7 @@ export default function SessionProvider({ children }) {
   const removeToken = () => {
     window.localStorage.removeItem('userToken');
     setUserToken(null);
-    setIsLogged(false);
+    // setIsLogged(false);
   };
 
   const signIn = async (values, callback) => {
@@ -54,7 +47,6 @@ export default function SessionProvider({ children }) {
         removeToken,
         userToken,
         signIn,
-        isLogged,
         setLoginError,
         loginError,
       }}

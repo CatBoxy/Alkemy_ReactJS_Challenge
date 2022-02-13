@@ -1,10 +1,12 @@
 import React from 'react';
+import MainMenu from '../components/MainMenu';
+
 
 function Home(props) {
   return (
-    <div>
-      <h2>HOME</h2>
-    </div>
+    <>
+      <MainMenu/>
+    </>
   );
 }
 
