@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Button, ListGroup } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BiTime } from 'react-icons/bi';
 import { GiHeartPlus } from 'react-icons/gi';
 import { useMenu } from '../context/MenuProvider';

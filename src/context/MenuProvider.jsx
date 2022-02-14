@@ -56,6 +56,10 @@ export default function MenuProvider({ children }) {
     setMenu(newMenu);
   };
 
+  const resetMenu = () => {
+    setMenu([]);
+  };
+
   return (
     <MenuContext.Provider
       value = {{
@@ -65,6 +69,7 @@ export default function MenuProvider({ children }) {
         finalPrice,
         finalHealth,
         finalPrepTime,
+        resetMenu,
       }}
     >
       {children}

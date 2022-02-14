@@ -17,6 +17,7 @@
     "react-lottie": "^1.2.3",
     "react-router-dom": "^6.2.1",
     "string-strip-html": "^9.1.6",
+    "styled-components": "^5.3.3",
     "sweetalert": "^2.1.2",
     "yup": "^0.32.11"
   },

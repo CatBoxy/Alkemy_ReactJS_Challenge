@@ -4,11 +4,10 @@ import * as Yup from 'yup';
 import TextInput from './TextInput';
 import Loader from './Loader';
 
-export default function SearchForm({ getDishes }) {
-
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+export default function SearchForm({ getDishes, setIsLoading }) {
 
   function handleSubmit(values) {
+    setIsLoading(true);
     getDishes(values);
   }
 
@@ -25,28 +24,27 @@ export default function SearchForm({ getDishes }) {
             .required('Required'),
         })}
         onSubmit={async (values) => {
-          await sleep(2000);
           handleSubmit(values);
         }}
       >
-        {({ isSubmitting }) => (
-          <Form>
-            <TextInput
-              label="Your Dish"
-              name="dish"
-              type="text"
-              placeholder="Your Dish"
+
+        <Form>
+          <TextInput
+            label="Your Dish"
+            name="dish"
+            type="text"
+            placeholder="Your Dish"
+          />
+          <label>
+            <Field
+              name="vegan"
+              type="checkbox"
             />
-            <label>
-              <Field
-                name="vegan"
-                type="checkbox"
-              />
               Only vegan
-            </label>
-            {isSubmitting ? <Loader/> : <button type="submit" >Submit</button>}
-          </Form>
-        )}
+          </label>
+          <button type="submit" >Submit</button>
+        </Form>
+
       </Formik>
     </>
   );

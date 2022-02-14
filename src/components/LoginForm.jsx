@@ -8,7 +8,7 @@ import Loader from './Loader';
 import swal from 'sweetalert';
 
 export default function LoginForm() {
-  const { signIn, loginError, setLoginError } = useSession();
+  const { signIn, loginError, setLoginError, isLoading } = useSession();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,8 +20,6 @@ export default function LoginForm() {
       navigate(from, { replace: true });
     });
   }
-
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
   useEffect(() => {
     if (loginError) {
@@ -50,28 +48,27 @@ export default function LoginForm() {
             .required('Required'),
         })}
         onSubmit={async (values) => {
-          await sleep(2000);
-          handleSubmit(values);
+          await handleSubmit(values);
         }}
       >
-        {({ isSubmitting }) => (
-          <Form>
-            <TextInput
-              label="Email Address"
-              name="email"
-              type="email"
-              placeholder="Email"
-            />
-            <TextInput
-              label="Password"
-              name="password"
-              type="text"
-              placeholder="Password"
-            />
-            {isSubmitting ? <Loader/> : <button type="submit" >Submit</button>}
-            {/* <button type="submit" disabled={isSubmitting}>Submit</button> */}
-          </Form>
-        )}
+
+        <Form>
+          <TextInput
+            label="Email Address"
+            name="email"
+            type="email"
+            placeholder="Email"
+          />
+          <TextInput
+            label="Password"
+            name="password"
+            type="text"
+            placeholder="Password"
+          />
+          <button type="submit" disabled={isLoading}>Submit</button>
+          {isLoading && <Loader/>}
+        </Form>
+
       </Formik>
     </>
   );

@@ -1,13 +1,12 @@
 import React from 'react';
 import { Container, Col, Row, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import MealCard from './MealCard';
 import swal from 'sweetalert';
 import { useMenu } from '../context/MenuProvider';
 import usePriceFormat from '../hooks/usePriceFormat';
 
 export default function MainMenu() {
-  const { menu, finalPrice, finalHealth, finalPrepTime } = useMenu();
+  const { menu, finalPrice, finalHealth, finalPrepTime, resetMenu } = useMenu();
   const [ precisePrice ] = usePriceFormat({ price: finalPrice });
 
   return (
@@ -27,7 +26,7 @@ export default function MainMenu() {
       <Container>
         <Row>
           <Col>
-            <Button>
+            <Button onClick={() => resetMenu()}>
             Reset Menu
             </Button>
           </Col>

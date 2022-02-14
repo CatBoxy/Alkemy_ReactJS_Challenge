@@ -6,7 +6,7 @@ const SessionContext = createContext();
 export const useSession = () => useContext(SessionContext);
 
 export default function SessionProvider({ children }) {
-
+  const [ isLoading, setIsLoading ] = useState(false);
   const [ loginError, setLoginError ] = useState(false);
   const [ userToken, setUserToken ] = useState(() =>
     JSON.parse(window.localStorage.getItem('userToken') || null),
@@ -30,13 +30,16 @@ export default function SessionProvider({ children }) {
   };
 
   const signIn = async (values, callback) => {
+    setIsLoading(true);
     const authToken = await fetchToken(values);
     if (Object.keys(authToken)[0] === 'token') {
       storeToken(authToken.token);
       callback();
+      setIsLoading(false);
     }
     else {
       setLoginError(true);
+      setIsLoading(false);
     }
   };
 
@@ -49,6 +52,7 @@ export default function SessionProvider({ children }) {
         signIn,
         setLoginError,
         loginError,
+        isLoading,
       }}
     >
       {children}

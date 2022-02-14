@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SessionProvider from './context/SessionProvider.jsx';
 import MyRoutes from './MyRoutes.jsx';
-import GlobalHeader from './components/GlobalHeader.jsx';
+import GlobalHeader from './components/GlobalHeader/GlobalHeader.jsx';
 import MenuProvider from './context/MenuProvider';
 
 function App() {
@@ -11,8 +11,11 @@ function App() {
     <SessionProvider>
       <MenuProvider>
         <div className="App">
-          <GlobalHeader />
-          <MyRoutes />
+          <div className="mainContent">
+            <GlobalHeader />
+            <MyRoutes />
+          </div>
+          <div className="overlay"/>
         </div>
       </MenuProvider>
     </SessionProvider>
