@@ -3,15 +3,15 @@ import { media } from '../../styles/media/media';
 import { colors } from '../../styles/colors/colors';
 
 export const Styles = styled.div`
+
   .title {
-    color: ${colors.secondary};
     font-family: 'Cormorant Upright';
-    font-size: 2.75rem;
-    text-transform: uppercase;
-    font-weight: bold;
   }
 
-  .exploreLink {
-    margin-right: 1rem;
+  .form {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    align-content:center;
   }
 `;

@@ -1,3 +1,4 @@
+
 .App {
   background-image:url(./assets/images/malik-skydsgaard-jY9rX-E7ztU-unsplash.jpg);
   background-position: center;
@@ -25,6 +26,16 @@
   left:0;
   z-index:1;
   opacity: 50%;
+}
+
+.button {
+  background-color: #DCCA87;
+  border-color: #DCCA87;
+  border-radius: 0;
+  color: #0C0B08;
+  font-family: 'Cormorant Upright';
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 a {

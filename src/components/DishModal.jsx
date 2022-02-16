@@ -62,8 +62,8 @@ export default function DishModal(props) {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => addDish(props.dish)}>Add to menu</Button>
-          <Button onClick={props.onHide}>Close</Button>
-          {isDishInMenu !== undefined && (<Button onClick={() => deleteDish(props.dish)}>X</Button>) }
+          {/* <Button onClick={props.onHide}>Close</Button> */}
+          {isDishInMenu !== undefined && (<Button onClick={() => deleteDish(props.dish)}>Remove from menu</Button>) }
         </Modal.Footer>
       </Modal>
     </>

@@ -1,8 +1,8 @@
 import React from 'react';
-import MainMenu from '../components/MainMenu';
+import MainMenu from '../components/MainMenu/MainMenu';
 
 
-function Home(props) {
+function Home() {
   return (
     <>
       <MainMenu/>

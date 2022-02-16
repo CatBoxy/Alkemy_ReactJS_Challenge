@@ -4,14 +4,10 @@ import { colors } from '../../styles/colors/colors';
 
 export const Styles = styled.div`
   .title {
-    color: ${colors.secondary};
-    font-family: 'Cormorant Upright';
-    font-size: 2.75rem;
-    text-transform: uppercase;
-    font-weight: bold;
+    font-family: 'Cormoran Upright';
   }
 
-  .exploreLink {
-    margin-right: 1rem;
+  .grid {
+    margin: 1rem 0 1rem 0;
   }
 `;

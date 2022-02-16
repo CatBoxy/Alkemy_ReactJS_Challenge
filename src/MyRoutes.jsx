@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './screens/Home';
-import DishPage from './screens/DishPage';
 import LoginPage from './screens/LoginPage';
 import RequireAuth from './components/RequireAuth';
 import DishesPage from './screens/DishesPage';
@@ -25,14 +24,6 @@ function MyRoutes() {
             <LoginPage/>
           </RequireAuth>
         } />
-      <Route
-        path="/dish"
-        element= {
-          <RequireAuth>
-            <DishPage/>
-          </RequireAuth>
-        }
-      />
       <Route
         path="/dishes"
         element= {
