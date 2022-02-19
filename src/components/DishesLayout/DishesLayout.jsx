@@ -13,7 +13,7 @@ export default function DishesLayout() {
         <h1 className="title">
         Platos
         </h1>
-        <SearchForm getDishes={getDishes} setIsLoading={setIsLoading}/>
+        <SearchForm getDishes={getDishes} setIsLoading={setIsLoading} isLoading={isLoading}/>
         <SearchResults dishes={dishes} isLoading={isLoading}/>
       </Styles>
     </>

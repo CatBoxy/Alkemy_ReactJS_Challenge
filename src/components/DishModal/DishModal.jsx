@@ -1,10 +1,11 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { stripHtml } from 'string-strip-html';
-import { useMenu } from '../context/MenuProvider';
+import { useMenu } from '../../context/MenuProvider';
 import { BiTime } from 'react-icons/bi';
 import { GiHeartPlus } from 'react-icons/gi';
-import usePriceFormat from '../hooks/usePriceFormat';
+import usePriceFormat from '../../hooks/usePriceFormat';
+
 
 export default function DishModal(props) {
   const dishContent = stripHtml(props.dish.summary).result;
@@ -26,46 +27,49 @@ export default function DishModal(props) {
 
   return (
     <>
+
       <Modal
+        contentClassName="modalStyles"
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Header closeButton closeVariant="white" bsPrefix="modalHeader">
+          <Modal.Title id="contained-modal-title-vcenter" bsPrefix="modalTitle">
             {props.dish.title}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {props.dish.vegan &&
-            (<h5 className="mb-2" style={{ color: 'green' }}>Vegan</h5>)
+            (<h5 className="mb-2" style={{ color: 'green' }}>Vegano</h5>)
           }
-          <div style={{ display: 'flex', justifyContent: 'row' }}>
+          <div className="modalDishInfo">
             <img src={props.dish.image}/>
-            <div>
+            <div className='modalMenus'>
               <div>
-                <h5>Your Current Menu</h5>
+                <h5>Su Menu</h5>
                 <BiTime/>{' '}{finalPrepTime}{' '}
                 <GiHeartPlus/>{' '}{finalHealth}{'  $'}{currentMenuPrice}
               </div>
               <div>
-                <h5>Your Menu + {props.dish.title}</h5>
+                <h5>Su Menu + Plato</h5>
                 <BiTime/>{' '}{updatedMenu.menuPrepTime}{' '}
                 <GiHeartPlus/>{' '}{updatedMenu.menuHealth}{'  $'}{updatedMenu.menuPrice}
               </div>
             </div>
           </div>
-          <p>
+          <p className='modalP'>
             {dishContent}
           </p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => addDish(props.dish)}>Add to menu</Button>
+        <Modal.Footer bsPrefix="modalFooter">
+          <Button onClick={() => addDish(props.dish)}>Sumar al Menu</Button>
           {/* <Button onClick={props.onHide}>Close</Button> */}
-          {isDishInMenu !== undefined && (<Button onClick={() => deleteDish(props.dish)}>Remove from menu</Button>) }
+          {isDishInMenu !== undefined && (<Button onClick={() => deleteDish(props.dish)}>Remover del Menu</Button>) }
         </Modal.Footer>
       </Modal>
+
     </>
   );
 }

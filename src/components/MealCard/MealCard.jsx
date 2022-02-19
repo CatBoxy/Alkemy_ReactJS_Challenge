@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card, Button, ListGroup } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { BiTime } from 'react-icons/bi';
 import { GiHeartPlus } from 'react-icons/gi';
 import { useMenu } from '../../context/MenuProvider';
 import { useState } from 'react';
-import DishModal from '../DishModal';
+import DishModal from '../DishModal/DishModal';
 import usePriceFormat from '../../hooks/usePriceFormat';
-import { Styles } from './styles';
+import { Styles, CardBottom } from './styles';
 
 export default function MealCard({ dish, screen }) {
   const { menu, addDish, deleteDish } = useMenu();
@@ -35,13 +35,13 @@ export default function MealCard({ dish, screen }) {
               </div>
             </div>
 
-            <div className="cardBottom">
+            <CardBottom >
               {screen === 'dishes' &&
               (<Button className="button" onClick={() => addDish(dish)}>Sumar al menu</Button>)}
               <Button className="button" onClick={() => setModalShow(true)}>Detalle</Button>
               {isDishInMenu !== undefined &&
               (<Button className="button" onClick={() => deleteDish(dish)}>X</Button>) }
-            </div>
+            </CardBottom>
           </Card.Body>
         </Card>
         <DishModal

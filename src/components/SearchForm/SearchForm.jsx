@@ -2,11 +2,10 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import TextInput from '../TextInput/TextInput';
-import Loader from '../Loader';
 import { Styles } from './styles';
 import { Button } from 'react-bootstrap';
 
-export default function SearchForm({ getDishes, setIsLoading }) {
+export default function SearchForm({ getDishes, setIsLoading, isLoading }) {
 
   function handleSubmit(values) {
     setIsLoading(true);
@@ -23,8 +22,8 @@ export default function SearchForm({ getDishes, setIsLoading }) {
           }}
           validationSchema={Yup.object({
             dish: Yup.string()
-              .min(2, 'Debe contener al menos 2 caracteres')
-              .required('Requerido'),
+              .min(3, 'Este campo debe contener mas de 2 caracteres')
+              .required('Este campo debe contener mas de 2 caracteres'),
           })}
           onSubmit={async (values) => {
             handleSubmit(values);
@@ -46,7 +45,7 @@ export default function SearchForm({ getDishes, setIsLoading }) {
                   />
               Solo Vegano
                 </label>
-                <Button className="button" type="submit" >Buscar</Button>
+                <Button className="button" type="submit" disabled={isLoading} >Buscar</Button>
               </div>
             </div>
           </Form>

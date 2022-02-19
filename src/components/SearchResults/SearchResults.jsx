@@ -12,7 +12,7 @@ export default function SearchResults({ dishes, isLoading }) {
         <div className="gridContainer">
           {isLoading ? <Loader/>
             : <Container>
-              <Row xs={1} md={2} lg={4} className="g-4">
+              <Row xs={1} md={2} lg={3} xl={4} className="g-4">
                 {dishes.map((dish, idx) => (
                   <Col key={idx}>
                     <MealCard dish={dish} screen={'dishes'}/>

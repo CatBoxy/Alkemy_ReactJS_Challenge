@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchDishes, fetchNoQueryDishes } from '../services/requests';
+import swal from 'sweetalert';
 
 export default function useDishes(values) {
   const [ dishes, setDishes ] = useState([]);
@@ -16,10 +17,13 @@ export default function useDishes(values) {
 
   const getDishes = async (values) => {
     const myDishes = await fetchDishes(values);
-    if(myDishes) {
-      setDishes(myDishes);
+    if (myDishes.length === 0) {
+      swal('No existen platos con ese nombre, por favor modifique su busqueda');
       setIsLoading(false);
+      return;
     }
+    setDishes(myDishes);
+    setIsLoading(false);
   };
 
   return {
