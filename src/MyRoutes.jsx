@@ -11,7 +11,7 @@ function MyRoutes() {
   return (
     <Routes>
       <Route
-        exact path="/"
+        path="/"
         element={
           <RequireAuth>
             <Home/>
