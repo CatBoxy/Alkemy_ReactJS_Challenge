@@ -4,10 +4,9 @@ import * as Yup from 'yup';
 import TextInput from '../TextInput/TextInput';
 import { useSession } from '../../context/SessionProvider';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Loader from '../Loader';
 import swal from 'sweetalert';
 import { Styles } from './styles';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 
 export default function LoginForm() {
   const { signIn, loginError, setLoginError, isLoading } = useSession();
@@ -66,7 +65,7 @@ export default function LoginForm() {
               placeholder="Contraseña"
             />
             <Button className="button" type="submit" disabled={isLoading}>Enviar</Button>
-            {isLoading && <Loader/>}
+            {isLoading && <Spinner animation="border" variant="warning" style={{ marginTop: '1rem' }}/>}
           </Form>
 
         </Formik>

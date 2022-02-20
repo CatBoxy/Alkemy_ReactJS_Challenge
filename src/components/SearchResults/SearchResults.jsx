@@ -1,7 +1,6 @@
 import React from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, Spinner } from 'react-bootstrap';
 import MealCard from '../MealCard/MealCard';
-import Loader from '../Loader';
 import { Styles } from './styles';
 
 export default function SearchResults({ dishes, isLoading }) {
@@ -10,7 +9,7 @@ export default function SearchResults({ dishes, isLoading }) {
     <>
       <Styles>
         <div className="gridContainer">
-          {isLoading ? <Loader/>
+          {isLoading ? <Spinner animation="border" variant="warning" />
             : <Container>
               <Row xs={1} md={2} lg={3} xl={4} className="g-4">
                 {dishes.map((dish, idx) => (
