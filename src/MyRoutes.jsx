@@ -33,14 +33,14 @@ function MyRoutes() {
           </RequireAuth>
         }
       />
-      <Route
+      {/* <Route
         path='*'
         element= {
           <RequireAuth>
             <NotFound/>
           </RequireAuth>
         }
-      />
+      /> */}
     </Routes>
   );
 }
