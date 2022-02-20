@@ -19,14 +19,14 @@ function MyRoutes() {
         }
       />
       <Route
-        path={'/login'}
+        path='/login'
         element={
           <RequireAuth>
             <LoginPage/>
           </RequireAuth>
         } />
       <Route
-        path={'/dishes'}
+        path='/dishes'
         element= {
           <RequireAuth>
             <DishesPage/>
@@ -34,7 +34,7 @@ function MyRoutes() {
         }
       />
       <Route
-        path={'*'}
+        path='*'
         element= {
           <RequireAuth>
             <NotFound/>
