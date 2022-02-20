@@ -1,6 +1,6 @@
 {
   "name": "vite-projec",
-  "homepage": ".",
+  "homepage": "alkemy-react-js-challenge.vercel.app",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
