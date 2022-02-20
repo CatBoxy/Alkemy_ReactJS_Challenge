@@ -11,7 +11,7 @@ export const Styles = styled.div`
     font-weight: bold;
   }
 
-  .exploreLink {
+  .link {
     margin-right: 1rem;
   }
 `;

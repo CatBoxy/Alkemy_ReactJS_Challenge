@@ -14,7 +14,9 @@ function GlobalHeader() {
           <Container>
             <Navbar.Brand className="title"><Link to='/'>Home</Link></Navbar.Brand>
             <div>
-              {userToken && <Link className="exploreLink" to='/dishes'><Button className='button'>Explorar Platos</Button></Link>
+              {userToken && <Link className="link" to='/'><Button className='button'>Mi Menu</Button></Link>
+              }
+              {userToken && <Link className="link" to='/dishes'><Button className='button'>Explorar Platos</Button></Link>
               }
               {userToken && <Button className="button" onClick={removeToken}> Logout </Button>
               }

@@ -65,7 +65,7 @@ export default function LoginForm() {
               type="password"
               placeholder="Contraseña"
             />
-            <Button className="button" type="submit" disabled={isLoading}>Submit</Button>
+            <Button className="button" type="submit" disabled={isLoading}>Enviar</Button>
             {isLoading && <Loader/>}
           </Form>
 
