@@ -13,24 +13,24 @@ function MyRoutes() {
       <Route
         path="/"
         element={
-          <RequireAuth>
-            <Home/>
-          </RequireAuth>
+          // <RequireAuth>
+          <Home/>
+          /* </RequireAuth> */
         }
       />
       <Route
         path='/login'
         element={
-          <RequireAuth>
-            <LoginPage/>
-          </RequireAuth>
+          // <RequireAuth>
+          <LoginPage/>
+          /* </RequireAuth> */
         } />
       <Route
         path='/dishes'
         element= {
-          <RequireAuth>
-            <DishesPage/>
-          </RequireAuth>
+          // <RequireAuth>
+          <DishesPage/>
+          /* </RequireAuth> */
         }
       />
       {/* <Route
