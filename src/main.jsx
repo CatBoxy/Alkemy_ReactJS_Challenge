@@ -5,7 +5,7 @@ import App from './App';
 import { HashRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-  <Router basename={'https://alkemy-react-js-challenge.vercel.app/'}>
+  <Router >
     <React.StrictMode>
       <App />
     </React.StrictMode>
