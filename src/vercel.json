@@ -1,9 +1,16 @@
 {
-  "routes": [
+  "redirects": [
     {
-      "src": "/[^.]+",
-      "dest": "/",
-      "status": 200
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/dishes",
+      "destination": "/index.html"
     }
   ]
 }
