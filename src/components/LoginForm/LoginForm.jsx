@@ -9,15 +9,14 @@ import { Styles } from './styles';
 import { Button, Spinner } from 'react-bootstrap';
 
 export default function LoginForm() {
-  const { signIn, loginError, setLoginError, isLoading } = useSession();
+  const { logIn, loginError, setLoginError, isLoading } = useSession();
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || '/';
 
   function handleSubmit(values) {
-
-    signIn(values, () => {
+    logIn(values, () => {
       navigate(from, { replace: true });
     });
   }

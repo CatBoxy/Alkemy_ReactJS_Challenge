@@ -1,9 +1,9 @@
 import React, { useContext, createContext, useState } from 'react';
 import { fetchToken } from '../services/requests';
 
-const SessionContext = createContext();
+const sessionContext = createContext();
 
-export const useSession = () => useContext(SessionContext);
+export const useSession = () => useContext(sessionContext);
 
 export default function SessionProvider({ children }) {
   const [ isLoading, setIsLoading ] = useState(false);
@@ -26,10 +26,9 @@ export default function SessionProvider({ children }) {
   const removeToken = () => {
     window.localStorage.removeItem('userToken');
     setUserToken(null);
-    // setIsLogged(false);
   };
 
-  const signIn = async (values, callback) => {
+  const logIn = async (values, callback) => {
     setIsLoading(true);
     const authToken = await fetchToken(values);
     if (Object.keys(authToken)[0] === 'token') {
@@ -44,18 +43,18 @@ export default function SessionProvider({ children }) {
   };
 
   return (
-    <SessionContext.Provider
+    <sessionContext.Provider
       value = {{
         storeToken,
         removeToken,
         userToken,
-        signIn,
+        logIn,
         setLoginError,
         loginError,
         isLoading,
       }}
     >
       {children}
-    </SessionContext.Provider>
+    </sessionContext.Provider>
   );
 }
