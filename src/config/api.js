@@ -12,4 +12,4 @@ export const veganRecipesAPI = (query) => {
 
 export const noQueryRecipesAPI = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apikey}&addRecipeInformation=true&number=12`;
 
-export const authAPI = 'https://challenge-react.alkemy.org/';
+export const authAPI = 'http://challenge-react.alkemy.org/';
