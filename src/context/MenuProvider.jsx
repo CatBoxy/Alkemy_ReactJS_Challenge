@@ -12,6 +12,7 @@ export default function MenuProvider({ children }) {
   const [ finalHealth, setFinalHealth ] = useState(0);
   const [ finalPrepTime, setFinalPrepTime ] = useState(0);
 
+  // updates menu data when menu is updated
   useEffect(() => {
     let priceCount = 0;
     let healthCount = 0;

@@ -8,16 +8,17 @@ import usePriceFormat from '../../hooks/usePriceFormat';
 
 
 export default function DishModal(props) {
-  const dishContent = stripHtml(props.dish.summary).result;
+
   const { menu, addDish, deleteDish, finalPrice, finalHealth, finalPrepTime } = useMenu();
+  const [ currentMenuPrice ] = usePriceFormat({ price: finalPrice });
+  const dishContent = stripHtml(props.dish.summary).result; // Formats html content to plain string
 
   const isDishInMenu = menu.find(item => item.id === props.dish.id);
 
   const priceToUsd = props.dish.pricePerServing / 100;
-  const [ currentMenuPrice ] = usePriceFormat({ price: finalPrice });
 
   const newMenuPrice = priceToUsd + finalPrice;
-  const [ newMenuPrecisePrice ] = usePriceFormat({ price: newMenuPrice });
+  const [ newMenuPrecisePrice ] = usePriceFormat({ price: newMenuPrice }); // formats price to correct number of decimals
 
   const updatedMenu = {
     menuPrice: newMenuPrecisePrice,
@@ -65,7 +66,6 @@ export default function DishModal(props) {
         </Modal.Body>
         <Modal.Footer bsPrefix="modalFooter">
           <Button onClick={() => addDish(props.dish)}>Sumar al Menu</Button>
-          {/* <Button onClick={props.onHide}>Close</Button> */}
           {isDishInMenu !== undefined && (<Button onClick={() => deleteDish(props.dish)}>Remover del Menu</Button>) }
         </Modal.Footer>
       </Modal>

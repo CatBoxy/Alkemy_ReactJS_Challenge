@@ -9,12 +9,12 @@ export const fetchDishes = async (values) => {
       const veganRecipes = response.data.results;
       return veganRecipes;
     }
-    if (!values.vegan) {
-      const url = recipesAPI(values.dish);
-      const response = await axios.get(url);
-      const recipes = response.data.results;
-      return recipes;
-    }
+
+    const url = recipesAPI(values.dish);
+    const response = await axios.get(url);
+    const recipes = response.data.results;
+    return recipes;
+
   }
   catch (error) {
     console.log(error);

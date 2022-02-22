@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function usePriceFormat({ price }) {
   const [ formattedPrice, setFormattedPrice ] = useState();
 
-  useEffect(() => {
+  useEffect(() => { // formats price int to correct number of decimals
     const formatPrice = () => {
       let newFormattedPrice = price.toPrecision(3);
       if (newFormattedPrice.length === 5) {

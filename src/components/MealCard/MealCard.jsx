@@ -11,10 +11,10 @@ import { Styles, CardBottom } from './styles';
 export default function MealCard({ dish, screen }) {
   const { menu, addDish, deleteDish } = useMenu();
   const[ modalShow, setModalShow ] = useState(false);
-
   const isDishInMenu = menu.find(item => item.id === dish.id);
+
   const priceToUsd = dish.pricePerServing / 100;
-  const [ formattedPrice ] = usePriceFormat({ price: priceToUsd });
+  const [ formattedPrice ] = usePriceFormat({ price: priceToUsd }); // Formats price to correct number of decimals
 
   const veganProp = dish.vegan ? true : false;
 
@@ -40,7 +40,7 @@ export default function MealCard({ dish, screen }) {
               (<Button className="button" onClick={() => addDish(dish)}>Sumar al menu</Button>)}
               <Button className="button" onClick={() => setModalShow(true)}>Detalle</Button>
               {isDishInMenu !== undefined &&
-              (<Button className="button" onClick={() => deleteDish(dish)}>X</Button>) }
+              (<Button className="button" onClick={() => deleteDish(dish)}>Quitar</Button>) }
             </CardBottom>
           </Card.Body>
         </Card>

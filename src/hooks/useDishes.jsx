@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { fetchDishes, fetchNoQueryDishes } from '../services/requests';
 import swal from 'sweetalert';
 
@@ -6,7 +6,7 @@ export default function useDishes(values) {
   const [ dishes, setDishes ] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => { // fetch dishes whenever dishesScreen loads
     async function fetchData() {
       const MainRecipes = await fetchNoQueryDishes();
       setDishes(MainRecipes);
